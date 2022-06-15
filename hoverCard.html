@@ -1,0 +1,95 @@
+<style>
+.card {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.cardItem {
+    background-color: rgb(255, 255, 255);
+    height: 450px;
+    width: 350px;
+    transition-duration: 200ms;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    border-radius: 10px;
+    text-align: center;
+    pointer-events: none;
+}
+
+.cardItem h4 {
+    margin-top: 5px;
+    color: rgb(223, 223, 223);
+}
+
+.cardItem p {
+    margin: 20px;
+}
+
+.imgCard {
+    display: block;
+    margin: 0 auto;
+    height: 45%;
+    text-align: center;
+}
+
+.cardItem hr {
+    position: absolute;
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 50%;
+}
+
+.textCard {
+    padding: 10px;
+    background-color: rgb(122, 115, 216);
+    height: 55%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: rgb(255, 255, 255);
+}
+div.container {
+  display: flex;
+  width: 100vh;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+</style>
+<div class="container">
+  <div class="card">
+    <div class="cardItem">
+        <img src="https://www.ps.kz/assets/images/pscs_logo.svg" alt="toys hola" class="imgCard">
+        <div class="textCard">
+            <h4>Стоп-ходули</h4>
+            <p>
+                Отличный выбор, если Ваш малыш только учится ходить! Вместе с ходунками от 
+                HOLA первые шаги Вашего малыша станут гораздо ярче, интереснее, а главное - быстрее! 
+                Ходунки можно трансформировать в стол с набором развивающих элементов!
+            </p>
+            <h4>19 990 тг.</h4>
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+  const cards = document.querySelectorAll('.card');
+
+  for(let i = 0; i < cards.length; i++) {
+      const card = cards[i];
+      card.addEventListener('mousemove', rotate);
+      card.addEventListener('mouseout', sRotate);
+  }
+
+  function rotate(event) {
+      const cardItem = this.querySelector('.cardItem');
+      const halfHeight = cardItem.offsetHeight / 2;
+      const halfWidth = cardItem.offsetWidth / 2;
+
+      cardItem.style.transform = 'rotateX('+ -(event.offsetY - halfHeight) / 5 +'deg)' +
+      'rotateY('+ (event.offsetX - halfWidth) / 5 +'deg)';
+  }
+
+  function sRotate(event) {
+      const cardItem = this.querySelector('.cardItem');
+      cardItem.style.transform = 'rotate(0)';
+  }
+</script>
