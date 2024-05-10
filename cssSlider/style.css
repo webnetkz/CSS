@@ -1,0 +1,25 @@
+.horizontal-media-scroller {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: calc(10px / 2);
+  
+  /* scroll-margin-top: 100px; */ /* Вариант для stiky header */
+
+  overflow-x: auto;
+  overscroll-behavior-x: contain; /* Не скролит то что за пределами по оси X */
+  scroll-snap-type: x mandatory; /* Прилипает к краю*/
+  scroll-padding-inline: 10px;
+}
+
+.horizontal-media-scroller figure {
+    width: 100vw;
+    text-align: center;
+    scroll-snap-align: start; /* Залипать вот здесь */
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+}
